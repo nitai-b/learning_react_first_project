@@ -28,7 +28,20 @@ class App extends Component {
         { name: "Rae", age: "27" },
       ],
     });
-  };
+  }
+
+  /**this is a function that is used to change the name 
+   * using an input
+   */
+  changeNameHandler = (event) => {
+    this.setState({
+      persons: [
+        { name: 'Max', age: "25" },
+        { name: event.target.value, age: "21" },
+        { name: "Rae", age: "27" },
+      ],
+    });
+  }
 
   render() {
     return (
@@ -45,6 +58,7 @@ class App extends Component {
           click = {this.switchNameHandler.bind(this, 'Nitai Bhatta')}
           name={this.state.persons[1].name}
           age={this.state.persons[1].age}
+          changed={this.changeNameHandler}
         />
         <Person
           name={this.state.persons[2].name}
