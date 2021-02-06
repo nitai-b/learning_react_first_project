@@ -11,6 +11,12 @@ class App extends Component {
     ],
   };
 
+  /**
+   * I should also note that, you can only cause react to re-render
+   * the dom when you change the state (a keyword) and the 
+   * props of a component. 
+   */
+
   /**this is a function that is used to switch the person */
   switchNameHandler = () => {
     // console.log('this was clicked')
