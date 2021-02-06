@@ -35,7 +35,8 @@ class App extends Component {
       <div className="App">
         <h1>Hi I am react app</h1>
         {/* this is function that is passed by reference */}
-        <button onClick={this.switchNameHandler.bind(this, 'Nitai Raghunatha')}>Switch Name</button>
+        {/* this method of passing data is not really efficient because it causes react to re-render things pretty often */}
+        <button onClick={() => this.switchNameHandler('nitai barran all common letters')}>Switch Name</button>
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
