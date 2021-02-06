@@ -44,12 +44,25 @@ class App extends Component {
   }
 
   render() {
+
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      // to use the normal css properties you have to pass it in quotes
+      // otherwise you can do it like the rest of this piece of code for 
+      // styling the buttons
+      'border-radius': '8px',
+      cursor: 'pointer',
+    }
+
     return (
       <div className="App">
         <h1>Hi I am react app</h1>
         {/* this is function that is passed by reference */}
         {/* this method of passing data is not really efficient because it causes react to re-render things pretty often */}
-        <button onClick={() => this.switchNameHandler('nitai barran all common letters')}>Switch Name</button>
+        <button style={style} onClick={() => this.switchNameHandler('nitai barran all common letters')}>Switch Name</button>
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
