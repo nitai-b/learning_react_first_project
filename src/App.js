@@ -66,6 +66,30 @@ class App extends Component {
       cursor: "pointer",
     };
 
+    let persons = null;
+
+    if (this.state.showPersons) {
+      // if this state variable is true we can return some jsx code
+      persons = (
+        <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+          />
+          <Person
+            click={this.switchNameHandler.bind(this, "Nitai Bhatta")}
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            changed={this.changeNameHandler}
+          />
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+          />
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1>Hi I am react app</h1>
@@ -79,26 +103,7 @@ class App extends Component {
             This is what is done to render the content conditionally based on the state
             called showPersons
         */}
-        {
-          this.state.showPersons ? (
-            <div>
-              <Person
-                name={this.state.persons[0].name}
-                age={this.state.persons[0].age}
-              />
-              <Person
-                click={this.switchNameHandler.bind(this, "Nitai Bhatta")}
-                name={this.state.persons[1].name}
-                age={this.state.persons[1].age}
-                changed={this.changeNameHandler}
-              />
-              <Person
-                name={this.state.persons[2].name}
-                age={this.state.persons[2].age}
-              />
-            </div>
-          ) : null
-        }
+        {persons}
       </div>
     );
   }
