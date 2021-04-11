@@ -45,9 +45,10 @@ class App extends Component {
     });
   };
 
-  togglePersonsHandler = () => {
+  togglePersonsHandler = () => { // write the function definition like this so you can use the `this` keyword
     const doesShow = this.state.showPersons;
     this.setState({
+      // setstate is a special function that is used to manipulate the state
       showPersons: !doesShow,
     });
   };
@@ -73,24 +74,31 @@ class App extends Component {
         <button style={style} onClick={this.togglePersonsHandler}>
           Switch Name
         </button>
-        {this.state.showPersons ? (
-          <div>
-            <Person
-              name={this.state.persons[0].name}
-              age={this.state.persons[0].age}
-            />
-            <Person
-              click={this.switchNameHandler.bind(this, "Nitai Bhatta")}
-              name={this.state.persons[1].name}
-              age={this.state.persons[1].age}
-              changed={this.changeNameHandler}
-            />
-            <Person
-              name={this.state.persons[2].name}
-              age={this.state.persons[2].age}
-            />
-          </div>
-        ) : null}
+        {/* we must know that all that we've written here is javascript
+            and in order to interject javascript expressions, you can use curly braces. 
+            This is what is done to render the content conditionally based on the state
+            called showPersons
+        */}
+        {
+          this.state.showPersons ? (
+            <div>
+              <Person
+                name={this.state.persons[0].name}
+                age={this.state.persons[0].age}
+              />
+              <Person
+                click={this.switchNameHandler.bind(this, "Nitai Bhatta")}
+                name={this.state.persons[1].name}
+                age={this.state.persons[1].age}
+                changed={this.changeNameHandler}
+              />
+              <Person
+                name={this.state.persons[2].name}
+                age={this.state.persons[2].age}
+              />
+            </div>
+          ) : null
+        }
       </div>
     );
   }
