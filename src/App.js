@@ -32,8 +32,14 @@ class App extends Component {
     });
   };
 
+  // a note about arrays in javascript. these types are referenced
+  // meaning that the variable is a pointer to the original value
+  // and by changing the pointer you change the original value
+  // this can lead to unpredictable apps
+  // so you need to do things immutably
   deletePersonHandler = (personIndex)  => {
-    const persons = this.state.persons;
+    // const persons = this.state.persons.slice(); // this copies the original array to this variable constant
+    const persons = [...this.state.persons]; // the spread operator is similar to the function of slice() above
     persons.splice(personIndex, 1);
     this.setState({persons: persons});
   }
