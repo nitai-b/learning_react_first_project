@@ -19,19 +19,6 @@ class App extends Component {
    * props of a component.
    */
 
-  /**this is a function that is used to switch the person */
-  switchNameHandler = (newName) => {
-    // console.log('this was clicked')
-    // DONT DO THIS: this.state.persons[0].name = 'Nitai Barran';
-    this.setState({
-      persons: [
-        { name: newName, age: "25" },
-        { name: "Hari", age: "21" },
-        { name: "Rae", age: "27" },
-      ],
-    });
-  };
-
   /**this is a function that is used to change the name
    * using an input
    */
@@ -44,6 +31,12 @@ class App extends Component {
       ],
     });
   };
+
+  deletePersonHandler = (personIndex)  => {
+    const persons = this.state.persons;
+    persons.splice(personIndex, 1);
+    this.setState({persons: persons});
+  }
 
   togglePersonsHandler = () => { // write the function definition like this so you can use the `this` keyword
     const doesShow = this.state.showPersons;
@@ -72,8 +65,12 @@ class App extends Component {
       // if this state variable is true we can return some jsx code
       persons = (
         <div>
-          {this.state.persons.map(person => {
-            return <Person name={person.name} age={person.age}></Person>
+          {this.state.persons.map((person, index) => {
+            return <Person 
+            click={() => this.deletePersonHandler(index)}
+            name={person.name} 
+            age={person.age}>
+            </Person>
           })}
         </div>
       );
