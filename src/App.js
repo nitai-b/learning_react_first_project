@@ -76,7 +76,7 @@ class App extends Component {
             click={() => this.deletePersonHandler(index)}
             name={person.name} 
             age={person.age}
-            key={person.id}/>
+            key={person.id}/> // this is a key that you should add for react to efficiently update stuff on the ui
           })}
         </div>
       );
